@@ -80,7 +80,12 @@
     <Compile Include="StoreWindow.xaml.cs">
       <DependentUpon>StoreWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Web References\ShopService\Reference.cs">
+    <Compile Include="Web References\LogService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\RegService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -136,17 +141,28 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Web References\ShopService\item.xsd">
+    <None Include="Web References\LogService\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Web References\ShopService\item0.xsd">
+    <None Include="Web References\LogService\item0.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Web References\ShopService\Reference.map">
+    <None Include="Web References\LogService\LoginService.wsdl" />
+    <None Include="Web References\LogService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\ShopService\RegisterService.wsdl" />
+    <None Include="Web References\RegService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\RegService\item0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\RegService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\RegService\RegisterService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -158,9 +174,20 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:8733/Design_Time_Addresses/Week5Service/LoginService/%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\LogService\</RelPath>
+      <UpdateFromURL>http://localhost:8733/Design_Time_Addresses/Week5Service/LoginService/%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Week5_localhost_LoginService</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:8733/Design_Time_Addresses/Week5Service/RegisterService/%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\ShopService\</RelPath>
+      <RelPath>Web References\RegService\</RelPath>
       <UpdateFromURL>http://localhost:8733/Design_Time_Addresses/Week5Service/RegisterService/%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>

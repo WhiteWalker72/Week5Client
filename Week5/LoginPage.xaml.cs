@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Week5.LogService;
 
 namespace Week5
 {
@@ -20,14 +21,29 @@ namespace Week5
     /// </summary>
     public partial class LoginPage : Page
     {
-        public LoginPage()
+        private LoginService service = new LoginService();
+
+        public LoginPage() 
         {
             InitializeComponent();
-            //errorText.Text = "Some error..";
         }
 
         private void LoginBtnClick(object sender, RoutedEventArgs e)
         {
+            string username = UsernameBox.Text;
+            string password = PasswordBox.Text;
+            if (username.Length < 1 || password.Length < 1)
+            {
+                errorText.Text = "Insert your username and password.";
+                return;
+            }
+            service.Authenticate(username, password, out bool succes, out bool success2);
+            if (!succes)
+            {
+                errorText.Text = "Invalid username or password";
+                return;
+            }
+
             Window storeWindow = new StoreWindow();
             storeWindow.Show();
             Application.Current.MainWindow.Close();

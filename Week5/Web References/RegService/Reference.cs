@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace Week5.ShopService {
+namespace Week5.RegService {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
