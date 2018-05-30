@@ -31,8 +31,6 @@ namespace Week5.LogService {
         
         private System.Threading.SendOrPostCallback AuthenticateOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetUserOperationCompleted;
-        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -75,9 +73,6 @@ namespace Week5.LogService {
         public event AuthenticateCompletedEventHandler AuthenticateCompleted;
         
         /// <remarks/>
-        public event GetUserCompletedEventHandler GetUserCompleted;
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ILoginService/Authenticate", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public void Authenticate([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string username, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string password, out bool AuthenticateResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool AuthenticateResultSpecified) {
             object[] results = this.Invoke("Authenticate", new object[] {
@@ -110,36 +105,6 @@ namespace Week5.LogService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ILoginService/GetUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public User GetUser([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string username) {
-            object[] results = this.Invoke("GetUser", new object[] {
-                        username});
-            return ((User)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetUserAsync(string username) {
-            this.GetUserAsync(username, null);
-        }
-        
-        /// <remarks/>
-        public void GetUserAsync(string username, object userState) {
-            if ((this.GetUserOperationCompleted == null)) {
-                this.GetUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUserOperationCompleted);
-            }
-            this.InvokeAsync("GetUser", new object[] {
-                        username}, this.GetUserOperationCompleted, userState);
-        }
-        
-        private void OnGetUserOperationCompleted(object arg) {
-            if ((this.GetUserCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetUserCompleted(this, new GetUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -155,66 +120,6 @@ namespace Week5.LogService {
                 return true;
             }
             return false;
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Week5Service.Domain")]
-    public partial class User {
-        
-        private double moneyField;
-        
-        private bool moneyFieldSpecified;
-        
-        private string nameField;
-        
-        private string passwordField;
-        
-        /// <remarks/>
-        public double Money {
-            get {
-                return this.moneyField;
-            }
-            set {
-                this.moneyField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool MoneySpecified {
-            get {
-                return this.moneyFieldSpecified;
-            }
-            set {
-                this.moneyFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string Password {
-            get {
-                return this.passwordField;
-            }
-            set {
-                this.passwordField = value;
-            }
         }
     }
     
@@ -248,32 +153,6 @@ namespace Week5.LogService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[1]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
-    public delegate void GetUserCompletedEventHandler(object sender, GetUserCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public User Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((User)(this.results[0]));
             }
         }
     }

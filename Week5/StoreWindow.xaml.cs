@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Week5.LogService;
 using Week5.ProdService;
+using Week5.UsService;
 
 namespace Week5
 {
@@ -22,10 +23,10 @@ namespace Week5
     public partial class StoreWindow : Window
     {
         private ProductService productService = new ProductService();
-        private LoginService loginService = new LoginService();
+        private UserService userService = new UserService();
 
         private readonly String username;
-        private List<ProductItem> productItems = new List<ProductItem>();
+        private List<StockItem> productItems = new List<StockItem>();
 
         public StoreWindow(string username)
         {
@@ -40,7 +41,7 @@ namespace Week5
             if (index < 0)
                 return;
 
-            ProductItem item = productItems.ElementAt(index);
+            StockItem item = productItems.ElementAt(index);
             if (item != null)
             {
                 productService.BuyProduct(item.Name, username, out bool bought, out bool bought2);
@@ -48,6 +49,7 @@ namespace Week5
 
                 if (bought)
                 {
+                    userService.AddProduct(username, item.Name);
                     RefreshScreen();
                 }
             }
@@ -88,26 +90,45 @@ namespace Week5
 
             foreach (Product product in products)
             {
-                ProductItem item = new ProductItem { Name = product.Name, Price = product.Price, Stock = product.AmountInStock };
+                StockItem item = new StockItem { Name = product.Name, Price = product.Price, Stock = product.AmountInStock };
                 productItems.Add(item);
                 ProductList.Items.Add(item);
             }
 
-            // TODO: update user inv
-            User user = GetUser();
-
-
-            Money.Content = user == null ? "0.00" : user.Money.ToString();
+            userService.GetMoney(username, out double money, out bool success);
+            Money.Content = money;
+            RefreshInv();
         }
 
-        private User GetUser()
+        private void RefreshInv()
         {
-            return loginService.GetUser(username);
+            ProductItem[] items = userService.GetProductItems(username);
+            InventoryList.Items.Clear();
+            if (items.Length <= 0)
+                return;
+
+            var gridView = new GridView();
+            InventoryList.View = gridView;
+            gridView.Columns.Add(new GridViewColumn
+            {
+                Header = "Product",
+                DisplayMemberBinding = new Binding("ProductName")
+            });
+            gridView.Columns.Add(new GridViewColumn
+            {
+                Header = "Amount",
+                DisplayMemberBinding = new Binding("Amount")
+            });
+
+            foreach (ProductItem invItem in items)
+            {
+                InventoryList.Items.Add(invItem);
+            }
         }
 
     }
 
-    public class ProductItem
+    class StockItem
     {
         public string Name { get; set; }
 

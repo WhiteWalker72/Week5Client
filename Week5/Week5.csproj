@@ -80,6 +80,11 @@
     <Compile Include="StoreWindow.xaml.cs">
       <DependentUpon>StoreWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Web References\UsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\ProdService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -146,12 +151,23 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Web References\LogService\item1.xsd">
+    <None Include="Web References\UsService\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Web References\LogService\User.datasource">
+    <None Include="Web References\UsService\item0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\UsService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\UsService\ProductItem.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\UsService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\UsService\UserService.wsdl" />
     <None Include="Web References\ProdService\item.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -234,6 +250,17 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Week5_ShopService_RegisterService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:8733/Design_Time_Addresses/Week5Service/UserService/%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\UsService\</RelPath>
+      <UpdateFromURL>http://localhost:8733/Design_Time_Addresses/Week5Service/UserService/%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Week5_localhost_UserService</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
