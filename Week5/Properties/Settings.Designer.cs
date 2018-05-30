@@ -42,5 +42,15 @@ namespace Week5.Properties {
                 return ((string)(this["Week5_localhost_LoginService"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:8733/Design_Time_Addresses/Week5Service/ProductService/")]
+        public string Week5_localhost_ProductService {
+            get {
+                return ((string)(this["Week5_localhost_ProductService"]));
+            }
+        }
     }
 }

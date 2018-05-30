@@ -80,6 +80,11 @@
     <Compile Include="StoreWindow.xaml.cs">
       <DependentUpon>StoreWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Web References\ProdService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\LogService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -141,6 +146,29 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Web References\LogService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\LogService\User.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ProdService\item0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ProdService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ProdService\Product1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProdService\ProductService.wsdl" />
+    <None Include="Web References\ProdService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <None Include="Web References\LogService\item.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -184,6 +212,17 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Week5_localhost_LoginService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:8733/Design_Time_Addresses/Week5Service/ProductService/%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ProdService\</RelPath>
+      <UpdateFromURL>http://localhost:8733/Design_Time_Addresses/Week5Service/ProductService/%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Week5_localhost_ProductService</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:8733/Design_Time_Addresses/Week5Service/RegisterService/%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>

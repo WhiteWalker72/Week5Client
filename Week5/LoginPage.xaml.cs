@@ -44,7 +44,7 @@ namespace Week5
                 return;
             }
 
-            Window storeWindow = new StoreWindow();
+            Window storeWindow = new StoreWindow(username);
             storeWindow.Show();
             Application.Current.MainWindow.Close();
         }
