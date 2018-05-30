@@ -31,7 +31,7 @@ namespace Week5
         private void LoginBtnClick(object sender, RoutedEventArgs e)
         {
             string username = UsernameBox.Text;
-            string password = PasswordBox.Text;
+            string password = PasswordBox.Password;
             if (username.Length < 1 || password.Length < 1)
             {
                 errorText.Text = "Insert your username and password.";
